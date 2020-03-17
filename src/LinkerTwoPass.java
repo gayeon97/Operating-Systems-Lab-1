@@ -158,14 +158,20 @@ public class LinkerTwoPass {
 				//turning relative address into absolute address
 				if (origNTDigit % 10 == 3) {
 					finalNTDigit = origNTDigit/10 + allModBaseAddrss.get(k);
-					System.out.printf("%d:  %d\n",index,finalNTDigit);
+					if (index < 10) {
+						System.out.printf("%d:%8d\n",index,finalNTDigit);
+					} else {
+						System.out.printf("%d:%7d\n",index,finalNTDigit);
+					}
+					
 				} 
 				
 				//resolving external reference
 				else if (origNTDigit % 10 == 4) {
 					temp = Integer.toString(origNTDigit/10000);
 					if (symTable.get(allNUPairs.get(k).get(ntCounter)) == null) {
-						System.out.printf("%d:  %s111 Error: %s is not defined; 111 used\n",index,temp,allNUPairs.get(k).get(ntCounter));
+						System.out.printf("%d:%5s111 Error: %s is not defined; 111 used\n",index,temp,allNUPairs.get(k).get(ntCounter));
+						
 					} else {
 						extRef = Integer.toString(symTable.get(allNUPairs.get(k).get(ntCounter)));
 						int length = 3 - extRef.length();
@@ -174,21 +180,39 @@ public class LinkerTwoPass {
 						}
 						temp += extRef;
 						finalNTDigit = Integer.parseInt(temp);
-						System.out.printf("%d:  %d %s\n",index,finalNTDigit,extVarUsedInstrcnPlace.get(allNUPairs.get(k).get(ntCounter)));
+						if (index < 10) {
+							System.out.printf("%d:%8d %s\n",index,finalNTDigit,extVarUsedInstrcnPlace.get(allNUPairs.get(k).get(ntCounter)));
+						} else {
+							System.out.printf("%d:%7d %s\n",index,finalNTDigit,extVarUsedInstrcnPlace.get(allNUPairs.get(k).get(ntCounter)));
+						}
+						
 						symTableUsed.put(allNUPairs.get(k).get(ntCounter),true);
 					}
 					
 				} else if (origNTDigit % 10 == 2) {
 					if (Integer.parseInt(Integer.toString(origNTDigit).substring(1,4)) > 299) {
 						temp = origNTDigit/10000 + "299";
-						System.out.printf("%d:  %s Error: Absolute address exceeds machine size; largest legal value used.\n",index,temp);
+						if (index < 10) {
+							System.out.printf("%d:%8s Error: Absolute address exceeds machine size; largest legal value used.\n",index,temp);
+						} else {
+							System.out.printf("%d:%7s Error: Absolute address exceeds machine size; largest legal value used.\n",index,temp);
+						}
+						
 					} else {
 						finalNTDigit = origNTDigit/10;
-						System.out.printf("%d:  %d\n",index,finalNTDigit);
+						if (index < 10) {
+							System.out.printf("%d:%8d\n",index,finalNTDigit);
+						} else {
+							System.out.printf("%d:%7d\n",index,finalNTDigit);
+						}
 					}
 				} else {
 					finalNTDigit = origNTDigit/10;
-					System.out.printf("%d:  %d\n",index,finalNTDigit);
+					if (index < 10) {
+						System.out.printf("%d:%8d\n",index,finalNTDigit);
+					} else {
+						System.out.printf("%d:%7d\n",index,finalNTDigit);
+					}
 				}
 				ntCounter ++;
 				index ++;
