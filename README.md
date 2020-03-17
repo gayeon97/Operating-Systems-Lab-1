@@ -24,7 +24,7 @@ java LinkerTwoPass <inputTextFileName.txt
 
 ```
 
-For example, let's say input text files and LinkerTwoPass.java file are located in different folders, "Lab1" and "src", respectively, and "src" folder is inside of the Lab1 folder. If you want to execute the LinkerTwoPass.java file with the contents of input03.txt file (located inside of the Lab1 folder), do the following: 
+For example, let's say input text files and LinkerTwoPass.java file are located in different folders, "Lab1" and "src", respectively, and "src" folder is inside of the Lab1 folder. If you want to execute the LinkerTwoPass.java file with the contents of input03.txt file, do the following: 
 ### Compiling
 ```
 javac LinkerTwoPass.java
