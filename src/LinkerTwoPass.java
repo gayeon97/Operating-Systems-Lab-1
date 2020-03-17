@@ -120,10 +120,6 @@ public class LinkerTwoPass {
 			for (Map.Entry<String,Integer> entry : sorted.entrySet()) {
 				String key = entry.getKey();
 				for (int jjj: allNUPairsDefined.keySet()) {
-//					System.out.println("jjj: " + jjj);
-//					System.out.println("allNUPairsDefined.get(jjj): " + allNUPairsDefined.get(jjj));
-//					System.out.println("allNUPairsDefined.get(jjj).get(key): " + allNUPairsDefined.get(jjj).get(key));
-//					System.out.println("modNTLengths.get(jjj): " + modNTLengths.get(jjj));
 					if (allNUPairsDefined.get(jjj).get(key) != null) {
 						if (allNUPairsDefined.get(jjj).get(key) >= modNTLengths.get(jjj)) {
 							int newLength = allModBaseAddrss.get(jjj) + allModLength.get(jjj) - 1;
@@ -226,16 +222,7 @@ public class LinkerTwoPass {
 			if (!item.getValue()) {
 				System.out.printf("Warning: %s was defined in module %d but never used.\n", item.getKey(), symTableMod.get(item.getKey()));
 			}
-		}
-		
-//		System.out.println("allModBaseAddrss: " + allModBaseAddrss);
-//		System.out.println("allModLength: " + allModLength);
-//		System.out.println("symTable: " + symTable);
-//		System.out.println("symTableMod: " + symTableMod);
-//		System.out.println("symTableUsed: " + symTableUsed);
-//		System.out.println("allNUPairsDefined: " + allNUPairsDefined);
-//		System.out.println("allNUPairs: " + allNUPairs);
-//		System.out.println("allNTDigits: " + allNTDigits);		
+		}		
 	}
 
 }
