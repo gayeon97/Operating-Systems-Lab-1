@@ -59,9 +59,7 @@ public class LinkerTwoPass {
 					numDefs --;
 					allNUPairsDefined.put(i,symDefined);
 				}
-				
-
-				
+					
 				
 				//USE LIST
 				//store total number of NU pairs in the current module
@@ -110,7 +108,7 @@ public class LinkerTwoPass {
 				}
 				allNTDigits.put(i,currNTs);		 
 			} 
-		}		
+		} //end of PASS ONE		
 		
 		System.out.println();
 		
@@ -218,7 +216,7 @@ public class LinkerTwoPass {
 				index ++;
 			}
 			ntCounter = 0;
-		}
+		} //end of PASS TWO
 		
 		System.out.println();
 
